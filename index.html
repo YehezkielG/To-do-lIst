@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do list Web</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style/output.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body class="bg-blue-500">
+    <div class="m-auto w-1/2 max-sm:w-11/12 p-6 bg-white" style="min-height: 100vh;">  
+        <h1 class="font-bold text-4xl cursor-pointer">
+            To List App
+        </h1>
+        <div class="flex items-center mx-1">
+            <div class="material-symbols-outlined text-lg mr-1">
+                check_circle
+            </div>
+            <div>
+                <span id="totalTask"></span> Task, Complated <span id="totalComplated"></span>
+            </div>
+        </div>
+        <hr class="my-6">
+        <div id="tasksList">
+        </div>
+        <hr class="my-6">
+        <div class="border-b-2 py-1 flex">
+            <span class="material-symbols-outlined text-gray-400">
+                sort
+            </span>
+            <div class="w-full">
+                <input type="text" class="outline-none w-full font-medium px-3 text-lg" placeholder="Add a new task" id="inputTask">
+            </div>
+            <div class="flex items-center" style="width: 35px;">
+                <button class="flex rounded-full bg-blue-500 text-white " onclick="addData()" >
+                    <span class="material-symbols-outlined">
+                        add
+                    </span>
+                </button>
+            </div>
+        </div>
+        <!-- <input type="datetime-local">  -->
+        
+    </div>
+    <script src="javascript/script.js"></script>
+</body>
