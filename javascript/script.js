@@ -36,7 +36,7 @@ function ShowData() {
         </div>
         </div>
         <div class="flex align-center hidden text-white w-full transition" id='menu${index}'>
-            <button class="bg-red-400 w-1/3 p-2 flex content-center justify-center">
+            <button class="bg-red-400 w-1/3 p-2 flex content-center justify-center" onclick="removeTask(${index})">
             <span class="material-symbols-outlined mr-1">
                     delete
             </span> Delete
@@ -78,6 +78,7 @@ function removeChild() {
 // i == index
 
 function removeTask(i) {
+    closeMenu();
     getTasks = tasks;
     getTasks.splice(i, 1);
     localStorage.setItem('tasks', JSON.stringify(getTasks));
@@ -119,7 +120,7 @@ function update(i){
     getTasks = tasks;
     let taskInputBox = document.getElementById("task"+i);
     taskInputBox.removeAttribute('readonly');
-    taskInputBox.pla = "";
+    taskInputBox.value = "";
     closeMenu();
     taskInputBox.focus();
 }
