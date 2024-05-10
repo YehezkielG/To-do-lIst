@@ -120,9 +120,9 @@ function showMenu(i) {
 }
 
 function updateInput(i) {
+    closeMenu();
     let taskInputBox = document.getElementById("task" + i);
     taskInputBox.removeAttribute('readonly');
-    closeMenu();
     taskInputBox.focus();
     document.getElementById("checklogo"+i).classList.remove("hidden");
     document.getElementById("sidebtn" + i).classList.add("hidden");
@@ -136,6 +136,7 @@ function closeMenu() {
         }
         document.getElementById("sidebtn" + i).classList.remove("hidden");
         document.getElementById("checklogo"+i).classList.add("hidden");
+        document.getElementById("task"+i).readOnly = true;
     }
 }
 
@@ -148,7 +149,9 @@ function update(i){
     document.getElementById("checklogo"+i).classList.add("hidden");
     document.getElementById("sidebtn" + i).classList.remove("hidden");
     }
+    closeMenu();
 }
+
 
 window.onload = function () {
     ShowData();
