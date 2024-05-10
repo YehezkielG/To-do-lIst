@@ -9,23 +9,23 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body class="bg-blue-500">
-    <div class="m-auto w-1/2 max-sm:w-11/12 p-6 bg-white" style="min-height: 100vh;">  
+    <div class="m-auto w-1/2 max-sm:w-full p-6 bg-white" style="min-height: 100vh;">  
         <h1 class="font-bold text-4xl cursor-pointer">
-            To List App
+            To Do List
         </h1>
         <div class="flex items-center mx-1">
             <div class="material-symbols-outlined text-lg mr-1">
                 check_circle
             </div>
             <div>
-                <span id="totalTask"></span> Task, Complated <span id="totalComplated"></span>
+                <span id="totalTask"></span> Task, Completed <span id="totalCompleted"></span>
             </div>
         </div>
         <hr class="my-6">
         <div id="tasksList">
         </div>
         <hr class="my-6">
-        <div class="border-b-2 py-1 flex">
+        <div class="border-b-2 pt-1 flex">
             <span class="material-symbols-outlined text-gray-400">
                 sort
             </span>
@@ -40,6 +40,9 @@
                 </button>
             </div>
         </div>
+        <p class="text-red-500 text-sm mx-1 hidden" id="invalid">
+        Please type the task list
+        </p>
         <!-- <input type="datetime-local">  -->
         
     </div>
