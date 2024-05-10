@@ -149,6 +149,9 @@ function update(i){
     document.getElementById("checklogo"+i).classList.add("hidden");
     document.getElementById("sidebtn" + i).classList.remove("hidden");
     }
+    else{        
+    ShowData();
+    }
     closeMenu();
 }
 
