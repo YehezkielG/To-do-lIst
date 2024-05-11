@@ -18,3 +18,7 @@
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   /* font-family: 'Rosario'; */
 }
+.dateTimeCostom::-webkit-calendar-picker-indicator{
+  width: 100%;
+  opacity: 0;
+}

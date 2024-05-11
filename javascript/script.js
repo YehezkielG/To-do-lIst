@@ -13,7 +13,6 @@ function ShowData() {
             logo = 'check_circle';
             totalcomplated++;
         }
-
         let list = document.createElement("div");
         list.className = "clear-both";
         list.innerHTML = `<div class="flex bg-gray-100 my-1 z-10 shadow-sm">
@@ -51,9 +50,10 @@ function ShowData() {
             edit
             </span>
             </button>
-            <button class="bg-yellow-400 w-1/3 p-2 flex items-center justify-center max-sm:block">
+            <button class="bg-yellow-400 w-1/3 flex items-center justify-center max-sm:block">
             <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
-            notifications_active
+            <input type="datetime-local" class="dateTimeCostom absolute w-6 opacity-0">
+                notifications_active
             </span>
             </button>
         </div>
@@ -72,6 +72,7 @@ function addData() {
         getTasks = tasks;
         getTasks.push({
             taskName: input.trim(),
+
             complated: false,
         });
         localStorage.setItem('tasks', JSON.stringify(getTasks));
