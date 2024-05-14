@@ -15,7 +15,8 @@ function ShowData() {
         }
         let list = document.createElement("div");
         list.className = "clear-both";
-        list.innerHTML = `<div class="flex bg-gray-100 my-1 z-10 shadow-sm">
+        list.innerHTML = `
+        <div class="flex bg-gray-100 my-1 z-10 shadow-sm">
         <div class="flex items-center px-2">
         <button class="flex bg-none hover:text-green-500 ${value.complated ? 'text-green-500' : 'text-cyan-500'}"  onclick="complated(${index})">
             <span class="material-symbols-outlined text-2xl">
@@ -38,26 +39,42 @@ function ShowData() {
            </span>
            </button>  
         </div>
+        
         </div>
-        <div class="flex align-center hidden text-white w-full transition" id='menu${index}'>
-            <button class="bg-red-400 w-1/3 p-2 flex content-center justify-center max-sm:block" onclick="removeTask(${index})" >
-            <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
-                    delete
-            </span>             
-            </button>
-            <button class="bg-blue-400 w-1/3 p-2 flex items-center justify-center max-sm:block" onclick="updateInput(${index})">
-            <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
-            edit
-            </span>
-            </button>
-            <button class="bg-yellow-400 w-1/3 flex items-center justify-center max-sm:block">
-            <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
-            <input type="datetime-local" class="dateTimeCostom absolute w-6 opacity-0">
-                notifications_active
-            </span>
-            </button>
+        <div class="hidden text-white w-full transition" id='menu${index}'>
+        <div class="flex align-center">
+        <button class="bg-red-400 w-1/3 p-2 flex content-center justify-center max-sm:block" onclick="removeTask(${index})" >
+        <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
+                delete
+        </span>             
+        </button>
+        <button class="bg-blue-400 w-1/3 p-2 flex items-center justify-center max-sm:block" onclick="updateInput(${index})">
+        <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
+        edit
+        </span>
+        </button>
+        <button class="bg-yellow-400 w-1/3 flex items-center justify-center max-sm:block" onclick='bellOnClick(${index})'>
+        <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
+            notifications_active
+        </span>
+        </button>
         </div>
-        `;
+        <div class="">
+        <div class="flex  text-black items-center hidden p-2 " id="inputDateTime${index}">
+        <input type="datetime-local" class="w-full bg-transparent" oninput="inputDateTime(${index},this)">
+        <button class="flex content-end pl-2">
+            <span class="material-symbols-outlined text-lg">
+                close
+            </span>
+        </button>
+    </div>
+        </div>
+        </div>
+
+                 ${!value.complated ? `<small id='ShowDateTime${index}'>${value.DateTime.split('T').join(' ')}</small>` : ``}
+`
+        ;
+        
         document.getElementById("totalCompleted").textContent = totalcomplated;
         document.getElementById("tasksList").appendChild(list);
     });
@@ -72,8 +89,8 @@ function addData() {
         getTasks = tasks;
         getTasks.push({
             taskName: input.trim(),
-
             complated: false,
+            DateTime:""
         });
         localStorage.setItem('tasks', JSON.stringify(getTasks));
         document.getElementById("inputTask").value = "";
@@ -156,6 +173,18 @@ function update(i){
     closeMenu();
 }
 
+function bellOnClick(i){
+    document.getElementById("inputDateTime"+i).classList.remove("hidden");
+}
+
+
+function inputDateTime(i,This){
+    document.getElementById("ShowDateTime"+i).textContent = This.value.split('T').join(' ');
+    console.log(This.value);
+    getTasks = tasks;
+    getTasks[i].DateTime= This.value;
+    localStorage.setItem("tasks",JSON.stringify(getTasks));
+}
 
 window.onload = function () {
     ShowData();

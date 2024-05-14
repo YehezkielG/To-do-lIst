@@ -589,16 +589,29 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
 
-.block {
-  display: block;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
-.inline {
-  display: inline;
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.block {
+  display: block;
 }
 
 .flex {
@@ -625,12 +638,16 @@ video {
   width: 100%;
 }
 
-.w-10 {
-  width: 2.5rem;
+.w-11\/12 {
+  width: 91.666667%;
 }
 
-.w-6 {
-  width: 1.5rem;
+.w-1 {
+  width: 0.25rem;
+}
+
+.w-1\/12 {
+  width: 8.333333%;
 }
 
 .cursor-pointer {
@@ -641,16 +658,20 @@ video {
   align-content: center;
 }
 
+.content-end {
+  align-content: flex-end;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
 
 .justify-center {
   justify-content: center;
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 
 .rounded-full {
@@ -695,6 +716,16 @@ video {
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
 
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+}
+
 .bg-none {
   background-image: none;
 }
@@ -726,6 +757,14 @@ video {
   padding-top: 0.25rem;
 }
 
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -744,6 +783,11 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -779,12 +823,18 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.line-through {
-  text-decoration-line: line-through;
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.opacity-0 {
-  opacity: 0;
+.text-yellow-400 {
+  --tw-text-opacity: 1;
+  color: rgb(250 204 21 / var(--tw-text-opacity));
+}
+
+.line-through {
+  text-decoration-line: line-through;
 }
 
 .shadow-sm {

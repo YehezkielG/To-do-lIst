@@ -22,3 +22,6 @@
   width: 100%;
   opacity: 0;
 }
+#datetime-view::-webkit-calendar-picker-indicator{
+  display: none;
+}
