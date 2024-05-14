@@ -54,20 +54,13 @@ function ShowData() {
         </span>
         </button>
         <button class="bg-yellow-400 w-1/3 flex items-center justify-center max-sm:block" onclick='bellOnClick(${index})'>
+        <input type="datetime-local" class="w-full bg-transparent dateTimeCostom absolute" oninput="inputDateTime(${index},this)">
         <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
             notifications_active
         </span>
         </button>
         </div>
         <div class="">
-        <div class="flex  text-black items-center hidden p-2 " id="inputDateTime${index}">
-        <input type="datetime-local" class="w-full bg-transparent" oninput="inputDateTime(${index},this)">
-        <button class="flex content-end pl-2">
-            <span class="material-symbols-outlined text-lg">
-                close
-            </span>
-        </button>
-    </div>
         </div>
         </div>
 
@@ -173,9 +166,6 @@ function update(i){
     closeMenu();
 }
 
-function bellOnClick(i){
-    document.getElementById("inputDateTime"+i).classList.remove("hidden");
-}
 
 
 function inputDateTime(i,This){
