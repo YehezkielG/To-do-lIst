@@ -221,8 +221,6 @@ function requestNotificationPermission() {
         Notification.requestPermission().then(permission => {
             if (permission === 'granted') {
                 alert('Notification permission granted.');
-            } else {
-                alert('Notification permission denied.');
             }
         });
     }
