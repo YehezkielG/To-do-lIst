@@ -54,7 +54,7 @@ function ShowData() {
         </span>
         </button>
         <button class="bg-yellow-400 w-1/3 flex items-center justify-center max-sm:block" onclick='bellOnClick(${index})'>
-        <input type="datetime-local" class="bg-transparent dateTimeCostom absolute" oninput="inputDateTime(${index},this)">
+                <input type="datetime-local" class="outline-none border-none w-1 bg-transparent dateTimeCostom absolute" oninput="inputDateTime(${index},this)">
         <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
             notifications_active
         </span>
