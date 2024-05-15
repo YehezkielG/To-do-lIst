@@ -182,22 +182,12 @@ window.onload = function () {
 };
 
 //notification
-notification();
 function notification(){
     getTasks = tasks.filter(task => task.DateTime != "").forEach((task)=>{
         scheduleNotification(task.DateTime,task.taskName);
     });
 }
 
-function requestNotificationPermission() {
-    if (Notification.permission !== 'granted') {
-        Notification.requestPermission().then(permission => {
-            if (permission !== 'granted') {
-                alert("Permission for notifications was not granted");
-            }
-        });
-    }
-}
 
 function getDelayUntil(dateTime) {
     const targetTime = new Date(dateTime).getTime();
@@ -222,4 +212,23 @@ function scheduleNotification(dateTime, message) {
     } 
 }
 
+function requestNotificationPermission() {
+    // Cek apakah Notification API didukung oleh browser
+    if (!('Notification' in window)) {
+        alert('This browser does not support desktop notification');
+    } else if (Notification.permission !== 'granted') {
+        // Meminta izin dari pengguna
+        Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+                alert('Notification permission granted.');
+            } else {
+                alert('Notification permission denied.');
+            }
+        });
+    }
+}
+
+// Meminta izin notifikasi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', requestNotificationPermission);
+
+
