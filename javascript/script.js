@@ -67,7 +67,6 @@ function ShowData() {
                  ${!value.complated ? `<small class='w-full' id='ShowDateTime${index}'>${value.DateTime.split('T').join(' ')}</small>` : ``}
 `
         ;
-        
         document.getElementById("totalCompleted").textContent = totalcomplated;
         document.getElementById("tasksList").appendChild(list);
     });
@@ -174,8 +173,53 @@ function inputDateTime(i,This){
     getTasks = tasks;
     getTasks[i].DateTime= This.value;
     localStorage.setItem("tasks",JSON.stringify(getTasks));
+    notification();
 }
 
 window.onload = function () {
+    notification();
     ShowData();
 };
+
+//notification
+notification();
+function notification(){
+    getTasks = tasks.filter(task => task.DateTime != "").forEach((task)=>{
+        scheduleNotification(task.DateTime,task.taskName);
+    });
+}
+
+function requestNotificationPermission() {
+    if (Notification.permission !== 'granted') {
+        Notification.requestPermission().then(permission => {
+            if (permission !== 'granted') {
+                alert("Permission for notifications was not granted");
+            }
+        });
+    }
+}
+
+function getDelayUntil(dateTime) {
+    const targetTime = new Date(dateTime).getTime();
+    const currentTime = new Date().getTime();
+    return targetTime - currentTime;
+}
+
+function showNotification(message) {
+    if (Notification.permission === 'granted') {
+        new Notification(message);
+    } else {
+        alert(message);
+    }
+}
+
+function scheduleNotification(dateTime, message) {
+    const delay = getDelayUntil(dateTime);
+    if (delay > 0) {
+        setTimeout(() => {
+            showNotification(message);
+        }, delay);
+    } 
+}
+
+document.addEventListener('DOMContentLoaded', requestNotificationPermission);
