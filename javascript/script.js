@@ -53,7 +53,7 @@ function ShowData() {
         edit
         </span>
         </button>
-        <button class="bg-yellow-400 w-1/3 flex items-center justify-center max-sm:block" onclick='bellOnClick(${index})'>
+        <button class="bg-yellow-400 w-1/3 flex items-center justify-center max-sm:block">
                 <input type="datetime-local" class="outline-none border-none w-1 bg-transparent dateTimeCostom absolute" oninput="inputDateTime(${index},this)">
         <span class="material-symbols-outlined mr-1 max-sm:m-0 block">
             notifications_active
@@ -71,7 +71,6 @@ function ShowData() {
         document.getElementById("tasksList").appendChild(list);
     });
 }
-
 
 function addData() {
     let input = document.getElementById("inputTask").value;
@@ -164,8 +163,6 @@ function update(i){
     }
     closeMenu();
 }
-
-
 
 function inputDateTime(i,This){
     document.getElementById("ShowDateTime"+i).textContent = This.value.split('T').join(' ');
