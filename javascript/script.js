@@ -3,11 +3,17 @@ var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 let getTasks = []
 
-function ShowData() {
+function ShowData(filter) {
     let totalcomplated = 0;
     document.getElementById("totalTask").textContent = tasks.length;
     removeChild();
-    tasks.forEach((value, index) => {
+    if(filter == undefined){
+        getTasks = tasks;
+    }
+    else{
+        getTasks = tasks.filter(task => task.complated === filter);
+    }
+    getTasks.forEach((value, index) => {
         let logo = "radio_button_unchecked";
         if (value.complated) {
             logo = 'check_circle';
@@ -177,6 +183,28 @@ window.onload = function () {
     notification();
     ShowData();
 };
+
+let taskCategory = document.querySelectorAll("#TaskCategory");
+
+taskCategory.forEach((ul,index)=>{
+    ul.addEventListener("click",()=>{
+        taskCategory.forEach((ul)=>{
+            ul.classList.remove("bg-gray-100");
+            ul.classList.remove("text-blue-700");    
+        })
+        if(index == 1){
+            ShowData(false);
+        }
+        else if(index == 2){
+            ShowData(true);
+        }
+        else{
+            ShowData();
+        }
+        ul.classList.add("bg-gray-100");
+        ul.classList.add("text-blue-700");
+    })
+})
 
 //notification
 function notification(){

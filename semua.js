@@ -1,17 +1,12 @@
-let button = document.querySelector("button");
+function kontol(bila){
+    if(bila == undefined){
+        console.log("tolong lah ya kan");
+    }
+    else{
+    console.log(bila);
+}
+}
 
-button.addEventListener("click",()=>{
-    Notification.requestPermission().then(perm=>{
-        if(perm == 'granted'){
-            const notification = new Notification("Example notification",{
-                body: "This is more text",
-                data:{hello:"world"},
-                icon:"icon.jpg",
-                tag:"Wellcome Messege",
-            })
-            notification.addEventListener("show", e => {
-                console.log(e);
-            })
-        }
-    })
-})
+console.log(kontol("kontol"));
+
+console.log(kontol());
