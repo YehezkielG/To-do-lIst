@@ -194,7 +194,10 @@ function getDelayUntil(dateTime) {
 
 function showNotification(message) {
     if (Notification.permission === 'granted') {
-        new Notification(message);
+        new Notification("Complete your task!",{
+            body:`${message}`,
+            icon:"icon.png",
+        });
     } else {
         alert(message);
     }
