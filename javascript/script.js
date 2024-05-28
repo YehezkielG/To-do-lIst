@@ -4,34 +4,29 @@ var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 let getTasks = []
 
 function ShowData(filter) {
-    let totalcomplated = 0;
+    let totalcompleted = 0;
     document.getElementById("totalTask").textContent = tasks.length;
     removeChild();
-    if(filter == undefined){
         getTasks = tasks;
-    }
-    else{
-        getTasks = tasks.filter(task => task.complated === filter);
-    }
     getTasks.forEach((value, index) => {
         let logo = "radio_button_unchecked";
-        if (value.complated) {
+        if (value.completed) {
             logo = 'check_circle';
-            totalcomplated++;
+            totalcompleted++;
         }
         let list = document.createElement("div");
         list.className = "clear-both";
         list.innerHTML = `
         <div class="flex bg-gray-100 my-1 z-10 shadow-sm">
         <div class="flex items-center px-2">
-        <button class="flex bg-none hover:text-green-500 ${value.complated ? 'text-green-500' : 'text-cyan-500'}"  onclick="complated(${index})">
+        <button class="flex bg-none hover:text-green-500 ${value.completed ? 'text-green-500' : 'text-cyan-500'}"  onclick="completed(${index})">
             <span class="material-symbols-outlined text-2xl">
              ${logo}
             </span>
         </button>
         </div>
             <div class="w-full py-2">
-                <input type="text" id="task${index}" class="font-medium outline-none w-full text-lg bg-transparent ${value.complated ? "line-through" : ""} " readonly value = "${value.taskName}" placeholder="Can't edit task to empty">
+                <input type="text" id="task${index}" class="font-medium outline-none w-full text-lg bg-transparent ${value.completed ? "line-through" : ""} " readonly value = "${value.taskName}" placeholder="Can't edit task to empty">
             </div>
             <div class="flex items-center">
             <button class="flex items-center h-full px-2 text-white hidden bg-blue-500" id="checklogo${index}" onclick="update(${index})">
@@ -39,9 +34,9 @@ function ShowData(filter) {
             check
             </span>
             </button>
-            <button class=" flex items-center px-2" onclick="${value.complated ? `removeTask(${index})` : `showMenu(${index})`}" id="sidebtn${index}"">
+            <button class=" flex items-center px-2" onclick="${value.completed ? `removeTask(${index})` : `showMenu(${index})`}" id="sidebtn${index}"">
            <span class="material-symbols-outlined text-lg" id="menuToggle${index}">
-               ${value.complated ?  "close" : "expand_more"}
+               ${value.completed ?  "close" : "expand_more"}
            </span>
            </button>  
         </div>
@@ -70,10 +65,10 @@ function ShowData(filter) {
         </div>
         </div>
 
-                 ${!value.complated ? `<small class='w-full' id='ShowDateTime${index}'>${value.DateTime.split('T').join(' ')}</small>` : ``}
+                 ${!value.completed ? `<small class='w-full' id='ShowDateTime${index}'>${value.DateTime.split('T').join(' ')}</small>` : ``}
 `
         ;
-        document.getElementById("totalCompleted").textContent = totalcomplated;
+        document.getElementById("totalCompleted").textContent = totalcompleted;
         document.getElementById("tasksList").appendChild(list);
     });
 }
@@ -86,7 +81,7 @@ function addData() {
         getTasks = tasks;
         getTasks.push({
             taskName: input.trim(),
-            complated: false,
+            completed: false,
             DateTime:""
         });
         localStorage.setItem('tasks', JSON.stringify(getTasks));
@@ -113,9 +108,9 @@ function removeTask(i) {
     ShowData();
 }
 
-function complated(i) {
+function completed(i) {
     getTasks = tasks;
-    getTasks[i].complated = true;
+    getTasks[i].completed = true;
     localStorage.setItem('tasks', JSON.stringify(getTasks));
     ShowData();
 }
@@ -256,5 +251,3 @@ function requestNotificationPermission() {
 
 // Meminta izin notifikasi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', requestNotificationPermission);
-
-

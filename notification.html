@@ -1,14 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification</title>
-    <link rel="stylesheet" href="style/output.css">
-    <link rel="stylesheet" href="style/style.css">
-</head>
-<body class="flex justify-center">
-        <button class="px-3 py-1 rounded-md bg-blue-500 text-white mt-20">Click Me</button>
-        <script src="semua.js"></script>
-</body>
+<html>
+    <head>
+        <title>Web Notifikasi dengan Javascript | www.hakkoblogs.com</title>
+         
+        <!-- Bootstrap -->
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container" style="margin-top: 10px;">
+            <div class="row">
+                <center><button class="btn btn-primary" onclick="notifikasi()">
+                    Klik Disini
+                </button></center>
+            </div>
+        </div>
+         
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+         
+        <!-- Notifikasi Script -->
+        <script>
+            $(document).ready(function() {
+                  if (Notification.permission !== "granted")
+                    Notification.requestPermission();
+            });
+             
+            function notifikasi() {
+                if (!Notification) {
+                    alert('Browser kamu belum mendukung web notifikasi.'); 
+                    return;
+                }
+                if (Notification.permission !== "granted")
+                    Notification.requestPermission();
+                else {
+                    var notifikasi = new Notification('www.hakkoblogs.com', {
+                        icon: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-PyFDT7TRCBq4edhcfX4XDzOGrGAFkV2nfEhC1nVgY2p2EDFSI7LEhTUFupsCz4dh1f3l_n_3Np4NTof57ZSHIJBZb8IevAYPHtgRfiG8-_EuwgvNd3whAd6Kgkhtx0y9_rQUD8ehlnw/s1600/header2.jpg',
+                        body: "Belajar Javascipt itu menyenangkan",
+                    });
+                    notifikasi.onclick = function () {
+                        window.open("http://www.hakkoblogs.com");      
+                    };
+                    setTimeout(function(){
+                        notifikasi.close();
+                    }, 10000);
+                }
+            };
+        </script>
+    </body>
 </html>
